@@ -4,7 +4,6 @@ namespace Src\Products\Infrastructure\Tests;
 
 use Tests\TestCase;
 use Src\Products\Domain\ValueObjects\Name;
-use InvalidArgumentException;
 use Src\Products\Domain\Exceptions\NameException;
 
 class NameTest extends TestCase

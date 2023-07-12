@@ -8,6 +8,7 @@ use  Src\Products\Domain\ValueObjects\Description;
 use  Src\Products\Domain\ValueObjects\Name;
 use  Src\Products\Domain\ValueObjects\Price;
 use  Src\Products\Domain\ValueObjects\Sku;
+use  Src\Shared\Domain\ValueObjects\Id;
 
 class CreateProductUseCase
 {
@@ -26,7 +27,7 @@ class CreateProductUseCase
         float $price
     ): ProductEntity {
         $product = new ProductEntity(
-            $id,
+            new Id($id),
             new Sku($sku),
             new Name($name),
             new Description($description),

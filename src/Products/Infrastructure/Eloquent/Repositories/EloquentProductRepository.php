@@ -8,7 +8,8 @@ use  Src\Products\Domain\ValueObjects\Price;
 use  Src\Products\Domain\ValueObjects\Sku;
 use Src\Products\Domain\Contracts\ProductRepositoryInterface;
 use Src\Products\Domain\ProductEntity;
-use Src\Products\Infrastructure\Eloquent\ProductModel; 
+use Src\Products\Infrastructure\Eloquent\ProductModel;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class EloquentProductRepository implements ProductRepositoryInterface
 {
@@ -23,12 +24,12 @@ class EloquentProductRepository implements ProductRepositoryInterface
     /**
      * Get a product by its ID.
      *
-     * @param int $id
+     * @param Id 
      * @return ProductEntity|null
      */
-    public function getById(int $id): ?ProductEntity
+    public function getById(Id $id): ?ProductEntity
     {
-        $product = $this->model->find($id);
+        $product = $this->model->find($id->getValue());
 
         if (!$product) {
             return null;
@@ -51,9 +52,9 @@ class EloquentProductRepository implements ProductRepositoryInterface
      * Save a product.
      *
      * @param ProductEntity $product
-     * @return int
+     * @return Id
      */
-    public function save(ProductEntity $product): int
+    public function save(ProductEntity $product): Id
     {
         $eloquentProduct = $this->model;
         $eloquentProduct->sku = $product->getSku()->getValue();
@@ -62,7 +63,7 @@ class EloquentProductRepository implements ProductRepositoryInterface
         $eloquentProduct->price = $product->getPrice()->getValue();
         $eloquentProduct->saveOrFail();
 
-        return $eloquentProduct->id;
+        return new Id($eloquentProduct->id);
     }
 
     /**
@@ -73,6 +74,6 @@ class EloquentProductRepository implements ProductRepositoryInterface
      */
     public function delete(ProductEntity $product): void
     {
-        ProductModel::destroy($product->getId());
+        ProductModel::destroy($product->getId()->getValue());
     }
 }

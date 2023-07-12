@@ -4,7 +4,6 @@ namespace Src\Products\Infrastructure\Tests;
 
 use Tests\TestCase;
 use Src\Products\Domain\ValueObjects\Price;
-use InvalidArgumentException;
 use Src\Products\Domain\Exceptions\PriceException;
 
 class PriceTest extends TestCase

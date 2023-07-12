@@ -4,6 +4,7 @@ namespace Src\Products\Application;
 
 use Src\Products\Domain\Contracts\ProductRepositoryInterface;
 use Src\Products\Domain\ProductEntity;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class GetProductByIdUseCase
 {
@@ -14,7 +15,7 @@ class GetProductByIdUseCase
         $this->repository = $repository;
     }
 
-    public function execute(int $id): ?ProductEntity
+    public function execute(Id $id): ?ProductEntity
     {
         return $this->repository->getById($id);
     }

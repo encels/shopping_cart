@@ -6,10 +6,11 @@ use  Src\Products\Domain\ValueObjects\Description;
 use  Src\Products\Domain\ValueObjects\Name;
 use  Src\Products\Domain\ValueObjects\Price;
 use  Src\Products\Domain\ValueObjects\Sku;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class ProductEntity
 {
-    private int $id;
+    private Id $id;
     private Sku $sku;
     private Name $name;
     private ?Description $description;
@@ -17,7 +18,7 @@ class ProductEntity
     private \DateTimeImmutable $createdAt;
     private \DateTimeImmutable $updatedAt;
 
-    public function __construct(int $id,
+    public function __construct(Id $id,
         Sku $sku,
         Name $name,
         ?Description $description,
@@ -34,7 +35,7 @@ class ProductEntity
         $this->updatedAt = $updatedAt;
     }
 
-    public function getId(): int
+    public function getId(): Id
     {
         return $this->id;
     }

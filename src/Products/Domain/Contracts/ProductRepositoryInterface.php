@@ -3,6 +3,7 @@
 namespace Src\Products\Domain\Contracts;
 
 use Src\Products\Domain\ProductEntity;
+use Src\Shared\Domain\ValueObjects\Id;
 
 interface ProductRepositoryInterface
 {
@@ -12,15 +13,15 @@ interface ProductRepositoryInterface
      * @param int $id
      * @return ProductEntity|null
      */
-    public function getById(int $id): ?ProductEntity;
+    public function getById(Id $id): ?ProductEntity;
 
     /**
      * Save a product.
      *
      * @param ProductEntity $product
-     * @return void
+     * @return Id
      */
-    public function save(ProductEntity $product): int;
+    public function save(ProductEntity $product): Id;
 
     /**
      * Delete a product.

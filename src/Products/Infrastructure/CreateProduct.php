@@ -14,7 +14,13 @@ class CreateProduct
         $this->createProduct = $createProduct;
     }
 
-    public function save(int $id, string $sku, string $name, ?string $description, float $price): ProductEntity
+    public function save(
+        int $id,
+         string $sku,
+          string $name,
+           ?string $description,
+            float $price
+            ): ProductEntity
     {
 
         return $this->createProduct->execute($id, $sku, $name, $description, $price);
