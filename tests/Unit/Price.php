@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests;
+namespace Tests\Unit;
 
 use Src\Products\Infrastructure\Tests\PriceTest;
 
-class Price extends PriceTest
+final class Price extends PriceTest
 {
 }

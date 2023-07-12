@@ -9,6 +9,7 @@ use Src\Products\Domain\ValueObjects\Name;
 use Src\Products\Domain\ValueObjects\Price;
 use Src\Products\Domain\ValueObjects\Sku;
 use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class EloquentProductRepositoryTest extends TestCase
 {
@@ -16,7 +17,7 @@ class EloquentProductRepositoryTest extends TestCase
     public  function testCanGetById()
     {
         $repository = new EloquentProductRepository();
-        $id = 1;
+        $id = new Id(1);
         $sku = new Sku('ABCD123456');
         $name = new Name('Product Name');
         $description = new Description('This is a product description.');

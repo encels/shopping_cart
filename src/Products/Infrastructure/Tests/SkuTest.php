@@ -4,7 +4,7 @@ namespace Src\Products\Infrastructure\Tests;
 
 use Tests\TestCase;
 use Src\Products\Domain\ValueObjects\Sku;
-use InvalidArgumentException;
+use Src\Products\Domain\Exceptions\SkuException;
 
 class SkuTest extends TestCase
 {
@@ -17,14 +17,14 @@ class SkuTest extends TestCase
 
     public function testInvalidSkuLength()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(SkuException::class);
 
         new Sku('12345');
     }
 
     public function testEmptySkuCharacters()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(SkuException::class);
 
         new Sku('');
     }

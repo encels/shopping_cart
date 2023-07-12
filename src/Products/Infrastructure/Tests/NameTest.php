@@ -5,6 +5,7 @@ namespace Src\Products\Infrastructure\Tests;
 use Tests\TestCase;
 use Src\Products\Domain\ValueObjects\Name;
 use InvalidArgumentException;
+use Src\Products\Domain\Exceptions\NameException;
 
 class NameTest extends TestCase
 {
@@ -17,14 +18,14 @@ class NameTest extends TestCase
 
     public function testInvalidNameLength()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(NameException::class);
 
         new Name(str_repeat('a', 256));
     }
 
     public function testEmptyName()
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(NameException::class);
 
         new Name('');
     }

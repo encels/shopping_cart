@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests;
+namespace Tests\Unit;
 
 use \Src\Products\Infrastructure\Tests\SkuTest;
 
-class Sku extends SkuTest
+final class Sku extends SkuTest
 {
 }

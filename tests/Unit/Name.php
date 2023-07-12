@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests;
+namespace Tests\Unit;
 
 use Src\Products\Infrastructure\Tests\NameTest;
 
-class Name extends NameTest
+final class Name extends NameTest
 {
 }
