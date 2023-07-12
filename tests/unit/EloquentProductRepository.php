@@ -4,10 +4,8 @@ namespace Tests;
 
 use Src\Products\Infrastructure\Tests\EloquentProductRepositoryTest;
 
-class EloquentProductRepository extends TestCase
+class EloquentProductRepository extends EloquentProductRepositoryTest
 {
     
-    public function test(){
-        EloquentProductRepositoryTest::testCanGetById();
-    }
+    
 }

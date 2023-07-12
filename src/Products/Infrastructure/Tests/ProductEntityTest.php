@@ -2,7 +2,7 @@
 
 namespace Src\Products\Infrastructure\Tests;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Src\Products\Domain\ProductEntity;
 use Src\Products\Domain\ValueObjects\Description;
 use Src\Products\Domain\ValueObjects\Name;

@@ -2,9 +2,9 @@
 
 namespace Src\Products\Infrastructure\Tests;
 
+use Tests\TestCase;
 use Src\Products\Domain\ValueObjects\Name;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
 class NameTest extends TestCase
 {

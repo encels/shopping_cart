@@ -2,9 +2,9 @@
 
 namespace Src\Products\Infrastructure\Tests;
 
+use Tests\TestCase;
 use Src\Products\Domain\ValueObjects\Sku;
 use InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
 class SkuTest extends TestCase
 {

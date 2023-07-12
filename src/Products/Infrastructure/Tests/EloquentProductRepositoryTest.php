@@ -2,7 +2,7 @@
 
 namespace Src\Products\Infrastructure\Tests;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Src\Products\Domain\ProductEntity;
 use Src\Products\Domain\ValueObjects\Description;
 use Src\Products\Domain\ValueObjects\Name;
@@ -13,7 +13,7 @@ use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
 class EloquentProductRepositoryTest extends TestCase
 {
 
-    public static  function testCanGetById()
+    public  function testCanGetById()
     {
         $repository = new EloquentProductRepository();
         $id = 1;
@@ -30,11 +30,9 @@ class EloquentProductRepositoryTest extends TestCase
 
         $productEntity = $repository->getById($id);
 
-        parent::assertEquals($sku, $productEntity->getSku());
-        parent::assertEquals($name, $productEntity->getName());
-        parent::assertEquals($description, $productEntity->getDescription());
-        parent::assertEquals($price, $productEntity->getPrice());
-
+        $this->assertEquals($sku, $productEntity->getSku());
+        $this->assertEquals($name, $productEntity->getName());
+        $this->assertEquals($description, $productEntity->getDescription());
+        $this->assertEquals($price, $productEntity->getPrice());
     }
-
 }
