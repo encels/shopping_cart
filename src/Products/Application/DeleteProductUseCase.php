@@ -5,7 +5,7 @@ namespace Src\Products\Application;
 use Src\Products\Domain\Contracts\ProductRepositoryInterface;
 use Src\Products\Domain\ProductEntity;
 
-class DeleteProduct
+class DeleteProductUseCase
 {
     private ProductRepositoryInterface $repository;
 

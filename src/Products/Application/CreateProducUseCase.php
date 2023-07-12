@@ -9,7 +9,7 @@ use  Src\Products\Domain\ValueObjects\Name;
 use  Src\Products\Domain\ValueObjects\Price;
 use  Src\Products\Domain\ValueObjects\Sku;
 
-class CreateProduct
+class CreateProductUseCase
 {
     private ProductRepositoryInterface $repository;
 
@@ -19,12 +19,14 @@ class CreateProduct
     }
 
     public function execute(
+        int $id,
         string $sku,
         string $name,
         ?string $description,
         float $price
     ): ProductEntity {
         $product = new ProductEntity(
+            $id,
             new Sku($sku),
             new Name($name),
             new Description($description),

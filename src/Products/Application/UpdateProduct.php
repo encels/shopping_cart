@@ -3,9 +3,9 @@
 namespace Src\Products\Application;
 
 use Src\Products\Domain\Contracts\ProductRepositoryInterface;
-use  Src\Products\Domain\ProductEntity;
+use Src\Products\Domain\ProductEntity;
 
-class UpdateProduct
+class UpdateProductUseCase
 {
     private ProductRepositoryInterface $repository;
 
