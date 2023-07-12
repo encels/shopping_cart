@@ -4,6 +4,7 @@ namespace Src\Products\Infrastructure;
 
 use Src\Products\Application\GetProductByIdUseCase;
 use Src\Products\Domain\ProductEntity;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class GetProductById
 {
@@ -16,6 +17,6 @@ class GetProductById
 
     public function execute(int $id): ?ProductEntity
     {
-        return $this->getProductById->execute($id);
+        return $this->getProductById->execute(new Id($id));
     }
 }

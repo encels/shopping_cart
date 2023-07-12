@@ -30,4 +30,5 @@ interface ProductRepositoryInterface
      * @return void
      */
     public function delete(ProductEntity $product): void;
+
 }

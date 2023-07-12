@@ -4,25 +4,29 @@ namespace Src\Products\Infrastructure;
 
 use Src\Products\Application\CreateProductUseCase;
 use Src\Products\Domain\ProductEntity;
+use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class CreateProduct
 {
-    protected  $createProduct;
+    private $repository;
 
-    public function __construct(CreateProductUseCase $createProduct)
+    public function __construct(EloquentProductRepository $repository)
     {
-        $this->createProduct = $createProduct;
+        $this->repository = $repository;
     }
 
     public function save(
-        int $id,
-         string $sku,
-          string $name,
-           ?string $description,
-            float $price
-            ): ProductEntity
-    {
 
-        return $this->createProduct->execute($id, $sku, $name, $description, $price);
+        string $sku,
+        string $name,
+        ?string $description,
+        float $price
+    ): Id {
+
+        $createProductUseCase = new CreateProductUseCase($this->repository);
+
+
+        return $createProductUseCase->execute($sku, $name, $description, $price);
     }
 }

@@ -20,14 +20,12 @@ class CreateProductUseCase
     }
 
     public function execute(
-        int $id,
         string $sku,
         string $name,
         ?string $description,
         float $price
-    ): ProductEntity {
+    ): Id {
         $product = new ProductEntity(
-            new Id($id),
             new Sku($sku),
             new Name($name),
             new Description($description),
@@ -36,8 +34,6 @@ class CreateProductUseCase
             new \DateTimeImmutable()
         );
 
-        $this->repository->save($product);
-
-        return $product;
+       return $this->repository->save($product);
     }
 }

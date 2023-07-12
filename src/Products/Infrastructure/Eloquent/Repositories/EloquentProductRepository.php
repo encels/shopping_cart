@@ -42,7 +42,7 @@ class EloquentProductRepository implements ProductRepositoryInterface
         $createdAt = new \DateTimeImmutable($product->created_at);
         $updatedAt = new \DateTimeImmutable($product->updated_at);
 
-        $productEntity = new ProductEntity($id, $sku, $name, $description, $price, $createdAt, $updatedAt);
+        $productEntity = new ProductEntity($sku, $name, $description, $price, $createdAt, $updatedAt);
 
 
         return $productEntity;
@@ -52,7 +52,7 @@ class EloquentProductRepository implements ProductRepositoryInterface
      * Save a product.
      *
      * @param ProductEntity $product
-     * @return Id
+     * @return int
      */
     public function save(ProductEntity $product): Id
     {
@@ -76,4 +76,5 @@ class EloquentProductRepository implements ProductRepositoryInterface
     {
         ProductModel::destroy($product->getId()->getValue());
     }
+
 }

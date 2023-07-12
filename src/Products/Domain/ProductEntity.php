@@ -18,7 +18,7 @@ class ProductEntity
     private \DateTimeImmutable $createdAt;
     private \DateTimeImmutable $updatedAt;
 
-    public function __construct(Id $id,
+    public function __construct(
         Sku $sku,
         Name $name,
         ?Description $description,
@@ -26,7 +26,6 @@ class ProductEntity
         ?\DateTimeImmutable $createdAt,
         ?\DateTimeImmutable $updatedAt
     ) {
-        $this->id = $id;
         $this->sku = $sku;
         $this->name = $name;
         $this->description = $description;

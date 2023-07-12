@@ -15,7 +15,6 @@ class ProductEntityTest extends TestCase
 {
     public function testCanBeCreated()
     {
-        $id = new Id(123);
         $sku = new Sku('ABCD123456');
         $name = new Name('Product Name');
         $description = new Description('This is a product description.');
@@ -23,9 +22,8 @@ class ProductEntityTest extends TestCase
         $createdAt = new \DateTimeImmutable('2023-01-01');
         $updatedAt = new \DateTimeImmutable('2023-01-02');
 
-        $productEntity = new ProductEntity($id, $sku, $name, $description, $price, $createdAt, $updatedAt);
+        $productEntity = new ProductEntity($sku, $name, $description, $price, $createdAt, $updatedAt);
 
-        $this->assertEquals($id, $productEntity->getId());
         $this->assertEquals($sku, $productEntity->getSku());
         $this->assertEquals($name, $productEntity->getName());
         $this->assertEquals($description, $productEntity->getDescription());

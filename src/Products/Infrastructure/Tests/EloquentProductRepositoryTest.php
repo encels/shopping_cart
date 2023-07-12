@@ -17,7 +17,6 @@ class EloquentProductRepositoryTest extends TestCase
     public  function testCanGetById()
     {
         $repository = new EloquentProductRepository();
-        $id = new Id(1);
         $sku = new Sku('ABCD123456');
         $name = new Name('Product Name');
         $description = new Description('This is a product description.');
@@ -25,7 +24,7 @@ class EloquentProductRepositoryTest extends TestCase
         $createdAt = new \DateTimeImmutable('2023-01-01');
         $updatedAt = new \DateTimeImmutable('2023-01-02');
 
-        $productEntity = new ProductEntity($id, $sku, $name, $description, $price, $createdAt, $updatedAt);
+        $productEntity = new ProductEntity( $sku, $name, $description, $price, $createdAt, $updatedAt);
 
         $id = $repository->save($productEntity);
 
