@@ -24,8 +24,8 @@ class GetProductByIdTest extends TestCase
 
         $id = $createProduct->save('ABCD654321', 'Product Name 2', 'This is a product description 2.', 10.66);
         
-        $productFound = $repository->getById($id); //get the current product saved
-        
+        $productFound = $repository->getById($id); //find the product by Id
+
         $this->assertEquals($id, $productFound->getId());
 
     }

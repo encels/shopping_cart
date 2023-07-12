@@ -31,7 +31,8 @@ class CreateProductTest extends TestCase
         $createProduct = new CreateProduct($repository);
 
         $id = $createProduct->save($sku->getValue(), $name->getValue(), $description->getValue(), $price->getValue());
-        $productCreated = $repository->getById($id);
+        
+        $productCreated = $repository->getById($id); //get the current product saved
 
         $this->assertEquals($productEntity->getSku()->getValue(), $productCreated->getSku()->getValue());
 
