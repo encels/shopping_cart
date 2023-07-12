@@ -1,6 +1,7 @@
 <?php
 
 namespace  Src\Products\Domain\ValueObjects;
+use Src\Products\Domain\Exceptions\SkuException;
 
 class Sku
 {
@@ -9,11 +10,11 @@ class Sku
     public function __construct(string $value)
     {
         if (empty($value)) {
-            throw new \InvalidArgumentException('The SKU value cannot be empty.');
+            throw new SkuException('The SKU value cannot be empty.');
         }
 
         if (strlen($value) != 10) {
-            throw new \InvalidArgumentException('The SKU value must be 10 characters long.');
+            throw new SkuException('The SKU value must be 10 characters long.');
         }
 
         $this->value = $value;

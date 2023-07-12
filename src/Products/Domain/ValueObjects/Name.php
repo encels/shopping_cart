@@ -2,6 +2,8 @@
 
 namespace  Src\Products\Domain\ValueObjects;
 
+use Src\Products\Domain\Exceptions\NameException;
+
 class Name
 {
     private string $value;
@@ -9,11 +11,11 @@ class Name
     public function __construct(string $value)
     {
         if (empty($value)) {
-            throw new \InvalidArgumentException('The name value cannot be empty.');
+            throw new NameException('The name value cannot be empty.');
         }
 
         if (strlen($value) > 255) {
-            throw new \InvalidArgumentException('The name value must be 255 characters as maximum.');
+            throw new NameException('The name value must be 255 characters as maximum.');
         }
 
         $this->value = $value;

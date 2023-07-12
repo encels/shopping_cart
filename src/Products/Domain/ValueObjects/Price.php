@@ -2,6 +2,8 @@
 
 namespace  Src\Products\Domain\ValueObjects;
 
+use Src\Products\Domain\Exceptions\PriceException;
+
 class Price
 {
     private float $value;
@@ -9,7 +11,7 @@ class Price
     public function __construct(float $value)
     {
         if ($value < 0) {
-            throw new \InvalidArgumentException('The price value cannot be negative.');
+            throw new PriceException('The price value cannot be negative.');
         }
 
         $this->value = $value;
