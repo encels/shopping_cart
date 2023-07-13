@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Products;
 
-use Src\Products\Infrastructure\Tests\CreateProductTest;
+use Src\Products\Infrastructure\Tests\GetProductByIdTest;
 
-final class GetProductById extends CreateProductTest
+final class GetProductById extends GetProductByIdTest
 {
 }

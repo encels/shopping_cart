@@ -3,7 +3,6 @@
 namespace Src\Products\Infrastructure;
 
 use Src\Products\Application\CreateProductUseCase;
-use Src\Products\Domain\ProductEntity;
 use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
 use Src\Shared\Domain\ValueObjects\Id;
 

@@ -25,7 +25,7 @@ class CreateProductUseCase
         ?string $description,
         float $price
     ): Id {
-        $product = new ProductEntity(
+        $product = new ProductEntity( new Id(1),
             new Sku($sku),
             new Name($name),
             new Description($description),

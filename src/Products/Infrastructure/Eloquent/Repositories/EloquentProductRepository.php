@@ -42,7 +42,7 @@ class EloquentProductRepository implements ProductRepositoryInterface
         $createdAt = new \DateTimeImmutable($product->created_at);
         $updatedAt = new \DateTimeImmutable($product->updated_at);
 
-        $productEntity = new ProductEntity($sku, $name, $description, $price, $createdAt, $updatedAt);
+        $productEntity = new ProductEntity($id, $sku, $name, $description, $price, $createdAt, $updatedAt);
 
 
         return $productEntity;

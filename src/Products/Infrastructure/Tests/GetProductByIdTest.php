@@ -17,10 +17,10 @@ class GetProductByIdTest extends TestCase
         $createProduct = new CreateProduct($repository);
 
         $id = $createProduct->save('ABCD654321', 'Product Name 2', 'This is a product description 2.', 10.66);
-
+        
         $productFound = new GetProductById($repository);
-        $productFound->find($id->getValue()); //find the product by Id
+        $object = $productFound->find($id->getValue()); //find the product by Id
 
-        $this->assertEquals($id, $productFound->getId());
+        $this->assertEquals($id, $object->getId());
     }
 }

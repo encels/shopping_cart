@@ -10,6 +10,7 @@ use Src\Products\Domain\ValueObjects\Name;
 use Src\Products\Domain\ValueObjects\Price;
 use Src\Products\Domain\ValueObjects\Sku;
 use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class CreateProductTest extends TestCase
 {
@@ -17,6 +18,7 @@ class CreateProductTest extends TestCase
     {
 
         $repository = new EloquentProductRepository();
+        $id = new Id(1);
         $sku = new Sku('ABCD123456');
         $name = new Name('Product Name');
         $description = new Description('This is a product description.');
@@ -24,7 +26,7 @@ class CreateProductTest extends TestCase
         $createdAt = new \DateTimeImmutable();
         $updatedAt = new \DateTimeImmutable();
 
-        $productEntity = new ProductEntity($sku, $name, $description, $price, $createdAt, $updatedAt);
+        $productEntity = new ProductEntity($id, $sku, $name, $description, $price, $createdAt, $updatedAt);
 
         $createProduct = new CreateProduct($repository);
 
