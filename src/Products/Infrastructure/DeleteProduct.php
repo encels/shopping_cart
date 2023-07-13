@@ -3,19 +3,21 @@
 namespace Src\Products\Infrastructure;
 
 use Src\Products\Application\DeleteProductUseCase;
-use Src\Products\Domain\ProductEntity;
-
+use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class DeleteProduct
 {
-    protected  $deleteProduct;
+    protected $repository;
 
-    public function __construct(DeleteProductUseCase $deleteProduct)
+    public function __construct(EloquentProductRepository $repository)
     {
-        $this->deleteProduct = $deleteProduct;
+        $this->repository   = $repository;
     }
-    public function delete(ProductEntity $product): void
+    public function delete(int $id): void
     {
-        $this->deleteProduct->execute($product);
+        $deleteProductUseCase = new DeleteProductUseCase($this->repository);
+
+        $deleteProductUseCase->execute(new Id($id));
     }
 }

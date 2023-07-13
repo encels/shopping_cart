@@ -26,9 +26,9 @@ interface ProductRepositoryInterface
     /**
      * Delete a product.
      *
-     * @param ProductEntity $product
+     * @param Id
      * @return void
      */
-    public function delete(ProductEntity $product): void;
+    public function delete(Id $id): void;
 
 }

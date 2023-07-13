@@ -4,6 +4,7 @@ namespace Src\Products\Application;
 
 use Src\Products\Domain\Contracts\ProductRepositoryInterface;
 use Src\Products\Domain\ProductEntity;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class DeleteProductUseCase
 {
@@ -14,8 +15,8 @@ class DeleteProductUseCase
         $this->repository = $repository;
     }
 
-    public function execute(ProductEntity $product): void
+    public function execute(Id $id): void
     {
-        $this->repository->delete($product);
+        $this->repository->delete($id);
     }
 }

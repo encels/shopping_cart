@@ -9,7 +9,6 @@ use Src\Products\Domain\ValueObjects\Name;
 use Src\Products\Domain\ValueObjects\Price;
 use Src\Products\Domain\ValueObjects\Sku;
 use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
-use Src\Shared\Domain\ValueObjects\Id;
 
 class EloquentProductRepositoryTest extends TestCase
 {
@@ -24,7 +23,7 @@ class EloquentProductRepositoryTest extends TestCase
         $createdAt = new \DateTimeImmutable('2023-01-01');
         $updatedAt = new \DateTimeImmutable('2023-01-02');
 
-        $productEntity = new ProductEntity( $sku, $name, $description, $price, $createdAt, $updatedAt);
+        $productEntity = new ProductEntity($sku, $name, $description, $price, $createdAt, $updatedAt);
 
         $id = $repository->save($productEntity);
 

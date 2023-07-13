@@ -3,7 +3,6 @@
 namespace Src\Products\Infrastructure\Tests;
 
 use Tests\TestCase;
-use Src\Products\Application\CreateProductUseCase;
 use Src\Products\Domain\ProductEntity;
 use Src\Products\Infrastructure\CreateProduct;
 use Src\Products\Domain\ValueObjects\Description;
@@ -11,7 +10,6 @@ use Src\Products\Domain\ValueObjects\Name;
 use Src\Products\Domain\ValueObjects\Price;
 use Src\Products\Domain\ValueObjects\Sku;
 use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
-use Src\Shared\Domain\ValueObjects\Id;
 
 class CreateProductTest extends TestCase
 {
@@ -31,10 +29,12 @@ class CreateProductTest extends TestCase
         $createProduct = new CreateProduct($repository);
 
         $id = $createProduct->save($sku->getValue(), $name->getValue(), $description->getValue(), $price->getValue());
-        
+
         $productCreated = $repository->getById($id); //get the current product saved
 
         $this->assertEquals($productEntity->getSku()->getValue(), $productCreated->getSku()->getValue());
-
+        $this->assertEquals($productEntity->getName()->getValue(), $productCreated->getName()->getValue());
+        $this->assertEquals($productEntity->getDescription()->getValue(), $productCreated->getDescription()->getValue());
+        $this->assertEquals($productEntity->getPrice()->getValue(), $productCreated->getPrice()->getValue());
     }
 }

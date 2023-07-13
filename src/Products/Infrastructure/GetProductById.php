@@ -4,19 +4,22 @@ namespace Src\Products\Infrastructure;
 
 use Src\Products\Application\GetProductByIdUseCase;
 use Src\Products\Domain\ProductEntity;
+use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
 use Src\Shared\Domain\ValueObjects\Id;
 
 class GetProductById
 {
-    protected $getProductById;
+    protected $repository;
 
-    public function __construct(GetProductByIdUseCase $getProductById)
+    public function __construct(EloquentProductRepository $repository)
     {
-        $this->getProductById = $getProductById;
+        $this->repository   = $repository;
     }
 
-    public function execute(int $id): ?ProductEntity
+    public function find(int $id): ?ProductEntity
     {
-        return $this->getProductById->execute(new Id($id));
+        $getProductByIdUseCase = new GetProductByIdUseCase($this->repository);
+
+        return  $getProductByIdUseCase->execute(new Id($id));
     }
 }

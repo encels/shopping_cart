@@ -72,9 +72,9 @@ class EloquentProductRepository implements ProductRepositoryInterface
      * @param ProductEntity $product
      * @return void
      */
-    public function delete(ProductEntity $product): void
+    public function delete(Id $id): void
     {
-        ProductModel::destroy($product->getId()->getValue());
+        ProductModel::destroy($id->getValue());
     }
 
 }
