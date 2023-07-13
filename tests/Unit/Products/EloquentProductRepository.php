@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Products;
 
 use Src\Products\Infrastructure\Tests\EloquentProductRepositoryTest;
 
