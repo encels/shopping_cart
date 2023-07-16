@@ -9,17 +9,16 @@ use Src\Shared\Domain\ValueObjects\Id;
 
 class CreateCart
 {
-    private $repository;
+    private $createCartUseCase;
 
     public function __construct(EloquentCartRepository $repository)
     {
-        $this->repository = $repository;
+        $this->createCartUseCase = new CreateCartUseCase($repository);
     }
 
     public function save(): Id
     {
-        $createCartUseCase = new CreateCartUseCase($this->repository);
         $cart = new CartEntity();
-        return $createCartUseCase->execute($cart);
+        return $this->createCartUseCase->execute($cart);
     }
 }

@@ -14,7 +14,7 @@ use Src\Shared\Domain\ValueObjects\Id;
 class EloquentProductRepositoryTest extends TestCase
 {
 
-    public  function testCanGetById()
+    public  function testCanCreateAndGetById()
     {
         $repository = new EloquentProductRepository();
         $sku = new Sku('ABCD123456');

@@ -10,7 +10,7 @@ use Src\Products\Infrastructure\GetProductById;
 
 class DeleteProductTest extends TestCase
 {
-    public function testGetById()
+    public function testCanCreateFindAndDelete()
     {
 
         $repository = new EloquentProductRepository();

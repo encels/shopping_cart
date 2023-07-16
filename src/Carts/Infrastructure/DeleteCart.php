@@ -8,17 +8,15 @@ use Src\Shared\Domain\ValueObjects\Id;
 
 class DeleteCart
 {
-    private $repository;
+    private $deleteCartUseCase;
 
     public function __construct(EloquentCartRepository $repository)
     {
-        $this->repository = $repository;
+        $this->deleteCartUseCase = new DeleteCartUseCase($repository);
     }
 
     public function delete(int $id): void
     {
-        $deleteCartUseCase = new DeleteCartUseCase($this->repository);
-
-        $deleteCartUseCase->execute(new Id($id));
+        $this->deleteCartUseCase->execute(new Id($id));
     }
 }

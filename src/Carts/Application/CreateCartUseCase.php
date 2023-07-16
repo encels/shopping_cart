@@ -8,15 +8,15 @@ use Src\Shared\Domain\ValueObjects\Id;
 
 class CreateCartUseCase
 {
-private $cartRepository;
+    private $cartRepository;
 
-public function __construct(CartRepositoryInterface $cartRepository)
-{
-$this->cartRepository = $cartRepository;
-}
+    public function __construct(CartRepositoryInterface $cartRepository)
+    {
+        $this->cartRepository = $cartRepository;
+    }
 
-public function execute(CartEntity $cart): Id
-{
-return $this->cartRepository->save($cart);
-}
+    public function execute(CartEntity $cart): Id
+    {
+        return $this->cartRepository->save($cart);
+    }
 }

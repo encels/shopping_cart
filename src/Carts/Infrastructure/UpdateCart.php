@@ -8,17 +8,16 @@ use Src\Carts\Domain\CartEntity;
 
 class UpdateCart
 {
-    private $repository;
+    private $updateCartUseCase;
 
     public function __construct(EloquentCartRepository $repository)
     {
-        $this->repository = $repository;
+        $this->updateCartUseCase = new UpdateCartUseCase($repository);
     }
 
     public function update(CartEntity $cart): CartEntity
     {
-        $updateCartUseCase = new UpdateCartUseCase($this->repository);
 
-        return $updateCartUseCase->execute($cart);
+        return $this->updateCartUseCase->execute($cart);
     }
 }

@@ -9,17 +9,15 @@ use Src\Shared\Domain\ValueObjects\Id;
 
 class GetCartById
 {
-    private $repository;
+    private $getCartByIdUseCase;
 
     public function __construct(EloquentCartRepository $repository)
     {
-        $this->repository = $repository;
+        $this->getCartByIdUseCase = new GetCartByIdUseCase($repository);
     }
 
     public function getById(int $id): ?CartEntity
     {
-        $getCartByIdUseCase = new GetCartByIdUseCase($this->repository);
-
-        return $getCartByIdUseCase->execute(new Id($id));
+        return $this->getCartByIdUseCase->execute(new Id($id));
     }
 }
