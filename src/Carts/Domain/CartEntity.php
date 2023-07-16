@@ -7,14 +7,11 @@ use Src\Shared\Domain\ValueObjects\Id;
 class CartEntity
 {
     private $id;
-    private $createdAt;
-    private $updatedAt;
 
-    public function __construct(Id $id, \DateTimeImmutable $createdAt, \DateTimeImmutable $updatedAt)
+
+    public function __construct()
     {
-        $this->id = $id;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
+
     }
 
     public function getId(): Id
@@ -22,13 +19,9 @@ class CartEntity
         return $this->id;
     }
 
-    public function createdAt(): \DateTimeImmutable
+    public function setId(Id $id): void
     {
-        return $this->createdAt;
+        $this->id = $id ;
     }
 
-    public function updatedAt(): \DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
 }

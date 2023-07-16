@@ -44,11 +44,9 @@ class EloquentCartRepository implements CartRepositoryInterface
             return null;
         }
 
-        return new CartEntity(
-            new Id($cartModel->id),
-            new \DateTimeImmutable($cartModel->created_at),
-            new \DateTimeImmutable($cartModel->updated_at)
-        );
+        $cartEntity = new CartEntity(); 
+        $cartEntity->setId(new Id($cartModel->id));
+        return $cartEntity  ;
     }
 
     /**
@@ -76,7 +74,7 @@ class EloquentCartRepository implements CartRepositoryInterface
      */
     public function update(CartEntity $cart): CartEntity
     {
-        $cartModel = $this->cartModel->find($cart->id()->getValue());
+        $cartModel = $this->cartModel->find($cart->getId()->getValue());
 
         $cartModel->save();
 

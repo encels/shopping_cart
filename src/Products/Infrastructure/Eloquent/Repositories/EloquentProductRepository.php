@@ -39,11 +39,10 @@ class EloquentProductRepository implements ProductRepositoryInterface
         $name = new Name($product->name);
         $description = new Description($product->description);
         $price = new Price($product->price);
-        $createdAt = new \DateTimeImmutable($product->created_at);
-        $updatedAt = new \DateTimeImmutable($product->updated_at);
-
-        $productEntity = new ProductEntity($id, $sku, $name, $description, $price, $createdAt, $updatedAt);
-
+        $id = $product->id;
+ 
+        $productEntity = new ProductEntity($sku, $name, $description, $price);
+        $productEntity->setId(new Id($id));
 
         return $productEntity;
     }

@@ -25,13 +25,11 @@ class CreateProductUseCase
         ?string $description,
         float $price
     ): Id {
-        $product = new ProductEntity( new Id(1),
+        $product = new ProductEntity(
             new Sku($sku),
             new Name($name),
             new Description($description),
-            new Price($price),
-            new \DateTimeImmutable(),
-            new \DateTimeImmutable()
+            new Price($price)
         );
 
        return $this->repository->save($product);

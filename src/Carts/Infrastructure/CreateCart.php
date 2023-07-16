@@ -19,7 +19,7 @@ class CreateCart
     public function save(): Id
     {
         $createCartUseCase = new CreateCartUseCase($this->repository);
-        $cart = new CartEntity(new Id(1), new \DateTimeImmutable(), new \DateTimeImmutable());
+        $cart = new CartEntity();
         return $createCartUseCase->execute($cart);
     }
 }

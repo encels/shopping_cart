@@ -15,30 +15,28 @@ class ProductEntity
     private Name $name;
     private ?Description $description;
     private Price $price;
-    private \DateTimeImmutable $createdAt;
-    private \DateTimeImmutable $updatedAt;
 
     public function __construct(
-        Id $id,
         Sku $sku,
         Name $name,
         ?Description $description,
-        Price $price,
-        ?\DateTimeImmutable $createdAt,
-        ?\DateTimeImmutable $updatedAt
+        Price $price
     ) {
-        $this->id = $id;
         $this->sku = $sku;
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
+      
     }
 
     public function getId(): Id
     {
         return $this->id;
+    }
+
+    public function setId(Id $id): void
+    {
+        $this->id = $id;
     }
 
     public function getSku(): Sku
@@ -59,15 +57,5 @@ class ProductEntity
     public function getPrice(): Price
     {
         return $this->price;
-    }
-
-    public function getCreatedAt(): \DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function getUpdatedAt(): \DateTimeImmutable
-    {
-        return $this->updatedAt;
     }
 }

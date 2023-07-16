@@ -18,15 +18,13 @@ class CreateProductTest extends TestCase
     {
 
         $repository = new EloquentProductRepository();
-        $id = new Id(1);
         $sku = new Sku('ABCD123456');
         $name = new Name('Product Name');
         $description = new Description('This is a product description.');
         $price = new Price(10.66);
-        $createdAt = new \DateTimeImmutable();
-        $updatedAt = new \DateTimeImmutable();
+        
 
-        $productEntity = new ProductEntity($id, $sku, $name, $description, $price, $createdAt, $updatedAt);
+        $productEntity = new ProductEntity($sku, $name, $description, $price);
 
         $createProduct = new CreateProduct($repository);
 
