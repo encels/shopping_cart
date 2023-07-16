@@ -14,30 +14,40 @@ class ProductEntityTest extends TestCase
 {
     public function testCanBeCreated()
     {
-        $sku = new Sku('ABCD123456');
-        $name = new Name('Product Name');
-        $description = new Description('This is a product description.');
-        $price = new Price(10.66);
-     
+        $productEntity =
+            self::createProductEntityTest(
+                'ABCD123456',
+                'Product Name',
+                'This is a product description.',
+                10.66
+            );
 
-        $productEntity = new ProductEntity($sku, $name, $description, $price);
-
-        $this->assertEquals($sku, $productEntity->getSku());
-        $this->assertEquals($name, $productEntity->getName());
-        $this->assertEquals($description, $productEntity->getDescription());
-        $this->assertEquals($price, $productEntity->getPrice());
-     
+        $this->assertEquals('ABCD123456', $productEntity->getSku()->getValue());
+        $this->assertEquals('Product Name', $productEntity->getName()->getValue());
+        $this->assertEquals('This is a product description.', $productEntity->getDescription()->getValue());
+        $this->assertEquals(10.66, $productEntity->getPrice()->getValue());
     }
 
     public function testThrowsExceptionIfSkuIsEmpty()
     {
         $this->expectException(SkuException::class);
 
-        $sku = new Sku('');
-        $name = new Name('Product Name');
-        $description = new Description('This is a product description.');
-        $price = new Price(10.66);
+        self::createProductEntityTest('');
+    }
 
-        new ProductEntity( $sku, $name, $description, $price);
+    public static function createProductEntityTest(
+        $sku = 'ABCD123456',
+        $name = 'Product Name',
+        $description = 'This is a product description.',
+        $price = 10.66
+    ) {
+
+        $sku = new Sku($sku);
+        $name = new Name($name);
+        $description = new Description($description);
+        $price = new Price($price);
+
+
+        return new ProductEntity($sku, $name, $description, $price);
     }
 }

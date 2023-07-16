@@ -3,9 +3,10 @@
 namespace Src\Products\Infrastructure\Tests;
 
 use Tests\TestCase;
-use Src\Products\Infrastructure\CreateProduct;
 use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
 use Src\Products\Infrastructure\GetProductById;
+use Src\Shared\Domain\Exceptions\IdException;
+use Src\Shared\Domain\ValueObjects\Id;
 
 class GetProductByIdTest extends TestCase
 {
@@ -14,13 +15,32 @@ class GetProductByIdTest extends TestCase
 
         $repository = new EloquentProductRepository();
 
-        $createProduct = new CreateProduct($repository);
+        $id = CreateProductTest::createProductTest($repository);
 
-        $id = $createProduct->save('ABCD654321', 'Product Name 2', 'This is a product description 2.', 10.66);
-        
+        $object = self::getProductById($repository, $id);
+
+        $this->assertEquals($id, $object->getId());
+    }
+
+    public function testInvalidId()
+    {
+
+        $this->expectException(IdException::class);
+
+        $repository = new EloquentProductRepository();
+
+        $id = CreateProductTest::createProductTest($repository);
+
+        $object = self::getProductById($repository, new Id(-1));
+    }
+
+
+    public static function getProductById($repository, $id)
+    {
+
         $productFound = new GetProductById($repository);
         $object = $productFound->find($id->getValue()); //find the product by Id
 
-        $this->assertEquals($id, $object->getId());
+        return $object;
     }
 }

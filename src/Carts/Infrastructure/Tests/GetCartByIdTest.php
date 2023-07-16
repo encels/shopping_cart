@@ -13,15 +13,27 @@ class GetCartByIdTest extends TestCase
     {
         $repository = new EloquentCartRepository();
 
-        // Create a cart to search for it by ID
-        $createCart = new CreateCart($repository);
-        $cartId = $createCart->save();
+        $cartId = self::CreateCart($repository);
 
-        // Find the created cart by ID
-        $getCartById = new GetCartById($repository);
-        $cart = $getCartById->getById($cartId->getValue());
+        $cart = self::GetCartById($repository, $cartId);
 
         // Verify that the ID of the found cart matches the ID of the created cart
         $this->assertEquals($cartId, $cart->getId());
+    }
+
+    public static function CreateCart($repository)
+    {
+        // Create a cart to search for it by ID
+        $createCart = new CreateCart($repository);
+        $cartId = $createCart->save();
+        return $cartId;
+    }
+
+    public static function GetCartById($repository, $cartId)
+    {
+        // Find the created cart by ID
+        $getCartById = new GetCartById($repository);
+        $cart = $getCartById->getById($cartId->getValue());
+        return $cart;
     }
 }

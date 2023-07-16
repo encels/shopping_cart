@@ -3,14 +3,8 @@
 namespace Src\Products\Infrastructure\Tests;
 
 use Tests\TestCase;
-use Src\Products\Domain\ProductEntity;
 use Src\Products\Infrastructure\CreateProduct;
-use Src\Products\Domain\ValueObjects\Description;
-use Src\Products\Domain\ValueObjects\Name;
-use Src\Products\Domain\ValueObjects\Price;
-use Src\Products\Domain\ValueObjects\Sku;
 use Src\Products\Infrastructure\Eloquent\Repositories\EloquentProductRepository;
-use Src\Shared\Domain\ValueObjects\Id;
 
 class CreateProductTest extends TestCase
 {
@@ -18,23 +12,29 @@ class CreateProductTest extends TestCase
     {
 
         $repository = new EloquentProductRepository();
-        $sku = new Sku('ABCD123456');
-        $name = new Name('Product Name');
-        $description = new Description('This is a product description.');
-        $price = new Price(10.66);
-        
 
-        $productEntity = new ProductEntity($sku, $name, $description, $price);
-
-        $createProduct = new CreateProduct($repository);
-
-        $id = $createProduct->save($sku->getValue(), $name->getValue(), $description->getValue(), $price->getValue());
+        $id = self::createProductTest($repository);
 
         $productCreated = $repository->getById($id); //get the current product saved
 
-        $this->assertEquals($productEntity->getSku()->getValue(), $productCreated->getSku()->getValue());
-        $this->assertEquals($productEntity->getName()->getValue(), $productCreated->getName()->getValue());
-        $this->assertEquals($productEntity->getDescription()->getValue(), $productCreated->getDescription()->getValue());
-        $this->assertEquals($productEntity->getPrice()->getValue(), $productCreated->getPrice()->getValue());
+        $this->assertEquals('ABCD123456', $productCreated->getSku()->getValue());
+        $this->assertEquals('Product Name', $productCreated->getName()->getValue());
+        $this->assertEquals(
+            'This is a product description.',
+            $productCreated->getDescription()->getValue()
+        );
+        $this->assertEquals(10.66, $productCreated->getPrice()->getValue());
+    }
+
+    public static function createProductTest(
+        EloquentProductRepository $repository,
+        $sku = 'ABCD123456',
+        $name = 'Product Name',
+        $description = 'This is a product description.',
+        $price = 10.66
+    ) {
+        $createProduct = new CreateProduct($repository);
+
+        return $createProduct->save($sku, $name, $description, $price);
     }
 }
