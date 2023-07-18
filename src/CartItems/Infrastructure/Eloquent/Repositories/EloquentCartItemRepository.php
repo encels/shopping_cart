@@ -5,7 +5,7 @@ namespace Src\CartItems\Infrastructure\Eloquent\Repositories;
 use Src\CartItems\Domain\CartItemEntity;
 use Src\CartItems\Domain\Contracts\CartItemRepositoryInterface;
 use Src\CartItems\Domain\Exceptions\CartItemException;
-use Src\CartItems\Domain\ValueObjects\Quantity;
+use  Src\Shared\Domain\ValueObjects\Quantity;
 use Src\Shared\Domain\ValueObjects\Id;
 use Src\CartItems\Infrastructure\Eloquent\CartItemModel;
 use Src\Carts\Infrastructure\Eloquent\CartModel;

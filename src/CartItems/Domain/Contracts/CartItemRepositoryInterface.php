@@ -3,7 +3,7 @@
 namespace Src\CartItems\Domain\Contracts;
 
 use Src\CartItems\Domain\CartItemEntity;
-use Src\CartItems\Domain\ValueObjects\Quantity;
+use  Src\Shared\Domain\ValueObjects\Quantity;
 use Src\Shared\Domain\ValueObjects\Id;
 
 interface CartItemRepositoryInterface

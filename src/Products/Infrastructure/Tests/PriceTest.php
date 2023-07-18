@@ -3,8 +3,8 @@
 namespace Src\Products\Infrastructure\Tests;
 
 use Tests\TestCase;
-use Src\Products\Domain\ValueObjects\Price;
-use Src\Products\Domain\Exceptions\PriceException;
+use Src\Shared\Domain\ValueObjects\Price;
+use Src\Shared\Domain\Exceptions\PriceException;
 
 class PriceTest extends TestCase
 {

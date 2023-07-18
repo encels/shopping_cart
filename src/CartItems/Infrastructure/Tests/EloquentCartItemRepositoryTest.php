@@ -3,7 +3,7 @@
 namespace Src\CartItems\Infrastructure\Tests;
 
 use Src\CartItems\Domain\CartItemEntity;
-use Src\CartItems\Domain\ValueObjects\Quantity;
+use  Src\Shared\Domain\ValueObjects\Quantity;
 use Src\CartItems\Infrastructure\Eloquent\Repositories\EloquentCartItemRepository;
 use Src\Carts\Infrastructure\Eloquent\CartModel;
 use Src\Carts\Infrastructure\Eloquent\Repositories\EloquentCartRepository;

@@ -3,7 +3,7 @@
 namespace Src\CartItems\Infrastructure\Tests;
 
 use Src\CartItems\Domain\CartItemEntity;
-use Src\CartItems\Domain\ValueObjects\Quantity;
+use  Src\Shared\Domain\ValueObjects\Quantity;
 use Src\Shared\Domain\ValueObjects\Id;
 use Tests\TestCase;
 

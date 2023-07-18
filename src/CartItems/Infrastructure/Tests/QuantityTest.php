@@ -2,8 +2,8 @@
 
 namespace Src\CartItems\Infrastructure\Tests;
 
-use Src\CartItems\Domain\Exceptions\QuantityException;
-use Src\CartItems\Domain\ValueObjects\Quantity;
+use  Src\Shared\Domain\Exceptions\QuantityException;
+use  Src\Shared\Domain\ValueObjects\Quantity;
 use Tests\TestCase;
 
 

@@ -6,7 +6,7 @@ use Src\Products\Domain\Contracts\ProductRepositoryInterface;
 use  Src\Products\Domain\ProductEntity;
 use  Src\Products\Domain\ValueObjects\Description;
 use  Src\Products\Domain\ValueObjects\Name;
-use  Src\Products\Domain\ValueObjects\Price;
+use  Src\Shared\Domain\ValueObjects\Price;
 use  Src\Products\Domain\ValueObjects\Sku;
 use  Src\Shared\Domain\ValueObjects\Id;
 

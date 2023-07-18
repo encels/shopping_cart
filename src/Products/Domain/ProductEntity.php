@@ -4,7 +4,7 @@ namespace  Src\Products\Domain;
 
 use  Src\Products\Domain\ValueObjects\Description;
 use  Src\Products\Domain\ValueObjects\Name;
-use  Src\Products\Domain\ValueObjects\Price;
+use  Src\Shared\Domain\ValueObjects\Price;
 use  Src\Products\Domain\ValueObjects\Sku;
 use Src\Shared\Domain\ValueObjects\Id;
 

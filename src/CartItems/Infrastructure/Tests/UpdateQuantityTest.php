@@ -2,7 +2,7 @@
 
 namespace Src\CartItems\Infrastructure\Tests;
 
-use Src\CartItems\Domain\ValueObjects\Quantity;
+use  Src\Shared\Domain\ValueObjects\Quantity;
 use Src\CartItems\Infrastructure\Eloquent\Repositories\EloquentCartItemRepository;
 use Src\CartItems\Infrastructure\UpdateQuantity;
 use Tests\TestCase;
