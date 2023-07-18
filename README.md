@@ -32,15 +32,16 @@
 
 Now you can access the project at the following address: `http://localhost:8000`.
 
-##Technical Details
+## Technical Details
 The project is made in Lumen 10.x and uses a MySQL database. The migrations and the seeder can be found in the `database` directory.
 
-##Documentation
+## Documentation
 The project API documentation can be found at the following link: https://documenter.getpostman.com/view/2223722/2s946h9saL
 
-##Credits
+## Credits
 The project was created by *encels*.
 
-##Testing:
+## Testing:
 For the run the test please use the following command:
 
+```vendor/bin/phpunit --testdox```
