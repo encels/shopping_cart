@@ -14,16 +14,17 @@ class UpdateQuantityTest extends TestCase
     {
         $repository = new EloquentCartItemRepository();
 
-        $newQty = 15; // original value 10
+        $newQty = random_int(100,1000); // original value 10
 
         $id = GetCartItemByIdTest::createCartItem($repository);
 
         $object = GetCartItemByIdTest::getCartItemById($repository, $id);
 
+        $qtyOld = $object->getQuantity();
         $updateQuantity = new UpdateQuantity($repository);
 
         $updateQuantity->updateQuantity($id, $newQty);
 
-        $this->assertNotEquals($object->getQuantity(), new Quantity($newQty));
+        $this->assertNotEquals($qtyOld, new Quantity($newQty));
     }
 }
