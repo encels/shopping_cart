@@ -16,6 +16,8 @@
 // ADD ITEMS TO CART (POST)
 $router->post('/carts/items/fromArray', 'CartAddItemsController@index'); //from array
 $router->get('/carts/items/count', 'GetCartItemsController@index'); // all items
+$router->post('/carts/orders', 'SaveOrderController@index'); // save order from a cart
+
 
 
 // CREATE (POST)
