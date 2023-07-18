@@ -2,6 +2,7 @@
 
 namespace Src\Carts\Infrastructure\Eloquent\Repositories;
 
+use Src\Carts\Domain\Exceptions\CartException;
 use Src\Carts\Domain\CartEntity;
 use Src\Carts\Domain\Contracts\CartRepositoryInterface;
 use Src\Carts\Infrastructure\Eloquent\CartModel;
@@ -41,12 +42,14 @@ class EloquentCartRepository implements CartRepositoryInterface
         $cartModel = $this->cartModel->find($id->getValue());
 
         if (!$cartModel) {
+            throw new CartException('The Cart ID not exist.');
             return null;
         }
 
         $cartEntity = new CartEntity(); 
         $cartEntity->setId(new Id($cartModel->id));
-        return $cartEntity  ;
+        $cartEntity->setItems($cartModel->items()->get()->toArray());
+        return $cartEntity ;
     }
 
     /**
@@ -80,6 +83,27 @@ class EloquentCartRepository implements CartRepositoryInterface
 
         return $cart;
     }
+
+    public function updateItems(Id $id, array $items): void
+    {
+        $cart = $this->cartModel->find($id->getValue());
+        if ($cart) {
+            $cart->items()->delete();
+            foreach ($items as $item) {
+                $cart->items()->create($item);
+            }
+        }
+    }
+
+    public function empty(Id $id): CartEntity
+    {
+        $cart = $this->cartModel->find($id->getValue());
+        if ($cart) {
+            $cart->items()->delete();
+        }
+        return $this->getById($id);
+    }
+
 
     /**
      * Delete a cart.

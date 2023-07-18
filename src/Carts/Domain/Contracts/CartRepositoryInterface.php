@@ -40,6 +40,26 @@ interface CartRepositoryInterface
     public function update(CartEntity $cart): CartEntity;
 
     /**
+     * Updates a cart's items.
+     *
+     * @param Id $id The id of the cart to update.
+     * @param array $items The new items array.
+     *
+     * @return void
+     */
+    public function updateItems(Id $id, array $items): void;
+
+    /**
+     * Empty a cart's .
+     *
+     * @param Id $id The id of the cart to update.
+    
+     *
+     * @return CartEntity
+     */
+    public function empty(Id $id): CartEntity;
+
+    /**
      * Deletes a cart.
      *
      * @param int The id of the cart to delete.
