@@ -24,7 +24,7 @@
 
 7. Run the seeder:
 
-```php artisan db:seed```
+```php artisan db:seed --class=ProductTableSeeder```
 
 8. To run the web server, you can use the following command:
 
@@ -33,7 +33,7 @@
 Now you can access the project at the following address: `http://localhost:8000`.
 
 ## Technical Details
-The project is made in Lumen 10.x and uses a MySQL database. The migrations and the seeder can be found in the `database` directory.
+The project is made in Lumen 10.0 and uses a MySQL database. The migrations and the seeder can be found in the `database` directory.
 
 ## Documentation
 The project API documentation can be found at the following link: https://documenter.getpostman.com/view/2223722/2s946h9saL
