@@ -2,6 +2,7 @@
 
 namespace Src\CartItems\Application;
 
+use Src\CartItems\Domain\CartItemEntity;
 use Src\CartItems\Domain\Contracts\CartItemRepositoryInterface;
 use Src\CartItems\Domain\ValueObjects\Quantity;
 use Src\Shared\Domain\ValueObjects\Id;
@@ -15,8 +16,8 @@ class UpdateQuantityUseCase
         $this->repository = $repository;
     }
 
-    public function execute(int $id, int $quantity): void
+    public function execute(int $id, int $quantity): CartItemEntity
     {
-        $this->repository->updateQuantity(new Id($id), new Quantity($quantity));
+       return $this->repository->updateQuantity(new Id($id), new Quantity($quantity));
     }
 }

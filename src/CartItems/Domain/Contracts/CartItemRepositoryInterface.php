@@ -36,5 +36,5 @@ interface CartItemRepositoryInterface
      * @param Id $cartItemId The ID of the CartItem to update
      * @param Quantity $qty The Quantity to update.
      */
-    public function updateQuantity(Id $id, Quantity $qty): void;
+    public function updateQuantity(Id $id, Quantity $qty): CartItemEntity;
 }

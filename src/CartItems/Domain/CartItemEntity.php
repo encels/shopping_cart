@@ -51,4 +51,14 @@ class CartItemEntity
         $this->quantity = $qty;
     }
 
+    public function toArray(): array
+    {
+        return array(
+            'id' => $this->id ? $this->id->getValue() : null,
+            'cartId' => $this->cartId->getValue(),
+            'productId' => $this->productId->getValue(),
+            'quantity' => $this->quantity->getValue()
+        );
+    }
+
 }

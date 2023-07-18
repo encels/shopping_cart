@@ -25,21 +25,23 @@ class EloquentCartItemRepository implements CartItemRepositoryInterface
         $cartId = $cartItem->getCartId()->getValue();
         $productId = $cartItem->getProductId()->getValue();
 
-      
+
         $cart = CartModel::findOrFail($cartId);
         $product = ProductModel::findOrFail($productId);
+        $id = $cartItem->getId()?->getValue();
 
         if ($cart && $product) {
-            
-            $eloquentCartItem = $this->model;
-            $eloquentCartItem->cart_id = $cartId;
-            $eloquentCartItem->product_id = $productId;
-            $eloquentCartItem->quantity = $cartItem->getQuantity()->getValue();
-            $eloquentCartItem->saveOrFail();
-
-            return new Id($eloquentCartItem->id);
+            $cartItem = $this->model->updateOrCreate(
+                ['id' => $id],
+                [
+                    'cart_id' => $cartId,
+                    'product_id' => $productId,
+                    'quantity' => $cartItem->getQuantity()->getValue()
+                ]
+            );
+            return new Id($cartItem->id);
         } else {
-            throw new CartItemException('The Cart ID or the Product Id not exist.');
+            throw new CartItemException('The Cart ID or the Product Id does not exist.');
         }
     }
 
@@ -48,7 +50,7 @@ class EloquentCartItemRepository implements CartItemRepositoryInterface
         $eloquentCartItem = $this->model->find($cartItemId->getValue());
 
         if (!$eloquentCartItem) {
-            throw new CartItemException('The Cart ID not exist.');
+            throw new CartItemException('The Cart Item ID not exist.');
             return null;
         }
 
@@ -68,11 +70,12 @@ class EloquentCartItemRepository implements CartItemRepositoryInterface
         $this->model->destroy($id->getValue());
     }
 
-    public function updateQuantity(Id $cartItemId, Quantity $qty): void
+    public function updateQuantity(Id $cartItemId, Quantity $qty): CartItemEntity
     {
         $cartItemEntity = $this->getById($cartItemId);
         $cartItemEntity->setQuantity($qty);
 
-        $this->save($cartItemEntity);
+        $id = $this->save($cartItemEntity);
+        return $this->getById($id);
     }
 }
